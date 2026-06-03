@@ -373,6 +373,45 @@ const productDetails = {
 };
 
 document.title = `${data.title} | 磐宏清洗设备`;
+
+function setMetaContent(selector, value) {
+  const element = document.querySelector(selector);
+  if (element && value) element.setAttribute('content', value);
+}
+
+function setCanonicalHref(value) {
+  const element = document.querySelector('link[rel="canonical"]');
+  if (element && value) element.setAttribute('href', value);
+}
+
+function toAbsoluteAssetUrl(assetPath) {
+  try {
+    return new URL(assetPath || '/panhiro-brand-preview.png', window.location.origin).href;
+  } catch (error) {
+    return `${window.location.origin}/panhiro-brand-preview.png`;
+  }
+}
+
+function updateSubpageMetadata(pageKey, pageData) {
+  const canonicalUrl = new URL('/subpage', window.location.origin);
+  canonicalUrl.searchParams.set('page', pageKey);
+  const title = `${pageData.title} | Panhiro 磐宏清洗设备`;
+  const description = pageData.summary || pageData.description || '磐宏清洗设备产品、服务与联系详情。';
+  const imageUrl = toAbsoluteAssetUrl(pageData.image || '/panhiro-brand-preview.png');
+
+  document.title = title;
+  setCanonicalHref(canonicalUrl.href);
+  setMetaContent('meta[name="description"]', description);
+  setMetaContent('meta[property="og:title"]', title);
+  setMetaContent('meta[property="og:description"]', description);
+  setMetaContent('meta[property="og:url"]', canonicalUrl.href);
+  setMetaContent('meta[property="og:image"]', imageUrl);
+  setMetaContent('meta[name="twitter:title"]', title);
+  setMetaContent('meta[name="twitter:description"]', description);
+  setMetaContent('meta[name="twitter:image"]', imageUrl);
+}
+
+updateSubpageMetadata(key, data);
 document.querySelector('[data-subpage-group]').textContent = data.group;
 document.querySelector('[data-subpage-title]').textContent = data.title;
 document.querySelector('[data-subpage-summary]').textContent = data.summary;

@@ -1,0 +1,6 @@
+.playwright-cli/
+output/
+assets/original-video-backup/
+head.tmp
+index.encoding-backup.html
+*.zip

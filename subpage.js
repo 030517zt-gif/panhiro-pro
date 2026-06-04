@@ -372,6 +372,42 @@ const productDetails = {
   },
 };
 
+Object.assign(productDetails['vk-y1'], {
+  specs: ['1800W', '110Bar', '8L/min', '16 档智能调速'],
+});
+
+Object.assign(productDetails['vk-1010-p4'], {
+  gallery: [
+    './assets/vk-1011-02.png',
+    './assets/vk-1011-03.png',
+    './assets/vk-1011-04.png',
+    './assets/vk-1010-p4-detail-04.png',
+  ],
+  specs: ['2500W', '100Bar', '10L/min', '商用级平台'],
+});
+
+Object.assign(productDetails['vk-1011'], {
+  specs: ['2800W', '110Bar', '9.5-10L/min', '商用级 VK 系列'],
+});
+
+Object.assign(productDetails['ph-0885'], {
+  gallery: [
+    './assets/ph-0995-02.png',
+    './assets/ph-0995-01.png',
+    './assets/ph-0995-card.png',
+    './assets/ph-0885-detail-04.png',
+  ],
+});
+
+Object.assign(productDetails.ph0995, {
+  gallery: [
+    './assets/ph-0995-03.png',
+    './assets/ph-0995-01.png',
+    './assets/ph-0995-card.png',
+    './assets/ph-0995-detail-04.png',
+  ],
+});
+
 document.title = `${data.title} | 磐宏清洗设备`;
 
 function setMetaContent(selector, value) {

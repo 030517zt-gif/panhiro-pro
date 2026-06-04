@@ -251,7 +251,7 @@
                 data-video-title="P5 入门家用手提款预览"
               >
                 <img src="./assets/p5-01-transparent.png" alt="P5 入门家用手提款" />
-                <span><b>P5</b><small>入门家用 · 点击播放视频</small></span>
+                <span><b>P5</b><small>1000W · 50Bar · 7.2L/min</small></span>
               </button>
               <a class="series-product" href="./subpage.html?page=p4-p5">
                 <img src="./assets/p5-02-transparent.png" alt="P4 手提款系列" />
@@ -260,7 +260,18 @@
             </div>
           </article>
 
-          <article class="need-card reveal tilt-card" data-tone="green" data-series-card>
+          <article
+            class="need-card reveal tilt-card"
+            data-tone="green"
+            data-series-card
+            data-card-video-trigger
+            data-video-src="./assets/ph-0995-pro.mp4"
+            data-video-eyebrow="PH-0995 产品视频"
+            data-video-title="PH-0995 高级家用 / 半商用预览"
+            tabindex="0"
+            role="button"
+            aria-label="播放 PH-0995 产品视频"
+          >
             <div class="need-card-head">
               <span>02</span>
               <small>高级家用 / 半商用</small>
@@ -275,16 +286,23 @@
             <div class="series-popover" data-series-popover aria-label="PH 系列产品">
               <div class="series-popover-head">
                 <span>高级家用 / 半商用</span>
-                <small>查看该系列型号</small>
+                <small>点击产品播放视频或查看详情</small>
               </div>
               <a class="series-product" href="./subpage.html?page=ph-0885">
                 <img src="./assets/ph-0995-02.png" alt="PH-0885 高压清洗机" />
                 <span><b>PH-0885</b><small>1800W · 85Bar · 1407 泵头</small></span>
               </a>
-              <a class="series-product" href="./subpage.html?page=ph0995">
+              <button
+                class="series-product"
+                type="button"
+                data-video-trigger
+                data-video-src="./assets/ph-0995-pro.mp4"
+                data-video-eyebrow="PH-0995 产品视频"
+                data-video-title="PH-0995 高级家用 / 半商用预览"
+              >
                 <img src="./assets/ph-0995-card.png" alt="PH-0995 高压清洗机" />
                 <span><b>PH-0995</b><small>2200W · 95Bar · 1408 泵头</small></span>
-              </a>
+              </button>
             </div>
           </article>
 
@@ -318,7 +336,7 @@
               </div>
               <a class="series-product" href="./subpage.html?page=vk-1010-p4">
                 <img src="./assets/vk-1011-02.png" alt="VK-1010-P4 高压清洗机" />
-                <span><b>VK-1010-P4</b><small>商用级平台款</small></span>
+                <span><b>VK-1010-P4</b><small>2500W · 100Bar · 10L/min</small></span>
               </a>
               <button
                 class="series-product"
@@ -329,7 +347,7 @@
                 data-video-title="VK-1011 商用级高压清洗机预览"
               >
                 <img src="./assets/vk-1011-01.png" alt="VK-1011 高压清洗机" />
-                <span><b>VK-1011</b><small>点击播放视频</small></span>
+                <span><b>VK-1011</b><small>2800W · 110Bar · 9.5-10L/min</small></span>
               </button>
             </div>
           </article>
@@ -354,7 +372,7 @@
               </div>
               <a class="series-product" href="./subpage.html?page=vk-y1">
                 <img src="./assets/r9-y1-01.png" alt="VK-Y1 高压清洗机" />
-                <span><b>VK-Y1</b><small>查看主推款详情</small></span>
+                <span><b>VK-Y1</b><small>1800W · 110Bar · 8L/min</small></span>
               </a>
             </div>
           </article>
@@ -737,5 +755,6 @@
     </div>
 
     <script src="./script.js"></script>
+    <script src="./inquiry.js"></script>
   </body>
 </html>

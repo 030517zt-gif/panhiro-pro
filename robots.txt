@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://panhiro-pro.pages.dev/sitemap.xml
+Sitemap: https://www.panhiro.top/sitemap.xml

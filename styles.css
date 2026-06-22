@@ -570,6 +570,63 @@ textarea {
   animation-delay: 660ms;
 }
 
+html[lang="en"] .launch-stage {
+  min-height: min(720px, calc(100vh - 32px));
+}
+
+html[lang="en"] .launch-brand img {
+  width: clamp(170px, 18vw, 300px);
+}
+
+html[lang="en"] .launch-brand span {
+  max-width: 330px;
+  line-height: 1.28;
+  letter-spacing: 0.18em;
+}
+
+html[lang="en"] .launch-machine {
+  width: min(56vw, 580px);
+}
+
+html[lang="en"] .launch-copy {
+  bottom: clamp(32px, 6vh, 70px);
+  width: min(900px, calc(100vw - 56px));
+}
+
+html[lang="en"] .launch-copy p {
+  letter-spacing: 0.26em;
+}
+
+html[lang="en"] .launch-copy h2 {
+  font-size: clamp(42px, 5.7vw, 78px);
+  line-height: 0.96;
+}
+
+html[lang="en"] .launch-copy h2 span {
+  white-space: normal;
+}
+
+html[lang="en"] .launch-copy > span {
+  font-size: clamp(14px, 1.45vw, 18px);
+}
+
+html[lang="en"] .hero h1 {
+  font-size: clamp(48px, 5.1vw, 74px);
+  line-height: 1.04;
+}
+
+html[lang="en"] .hero-copy {
+  max-width: 680px;
+}
+
+html[lang="en"] .section-heading h2,
+html[lang="en"] .flagship-copy h2,
+html[lang="en"] .company-hero h2,
+html[lang="en"] .contact-copy h2 {
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
 .nav {
   position: sticky;
   top: 0;

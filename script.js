@@ -22,8 +22,10 @@ const contactToggle = document.querySelector('[data-contact-toggle]');
 const contactClose = document.querySelector('[data-contact-close]');
 
 const inquiryEmailConfig = {
-  recipientEmail: '2949799538@qq.com',
-  formSubmitEndpoint: 'https://formsubmit.co/ajax/2949799538@qq.com',
+  recipientEmail: ['2949799538', 'qq.com'].join('@'),
+  get formSubmitEndpoint() {
+    return `https://formsubmit.co/ajax/${encodeURIComponent(this.recipientEmail)}`;
+  },
   emailJsPublicKey: '',
   emailJsServiceId: '',
   emailJsTemplateId: '',
@@ -72,6 +74,16 @@ function setContactFloat(open) {
   if (!contactFloat || !contactToggle) return;
   contactFloat.classList.toggle('open', open);
   contactToggle.setAttribute('aria-expanded', String(open));
+}
+
+function syncContactFloatWithLanguage(lang) {
+  if (!contactFloat || !contactToggle) return;
+  const shouldCollapse = lang === 'en';
+  contactFloat.classList.toggle('is-language-collapsed', shouldCollapse);
+  contactFloat.setAttribute('aria-hidden', String(shouldCollapse));
+  if (shouldCollapse) {
+    setContactFloat(false);
+  }
 }
 
 contactToggle?.addEventListener('click', () => {
@@ -702,7 +714,7 @@ const extendedTranslations = {
   产业基础: 'Industrial foundation',
   '温岭泵与电机产业集群核心地带，工业基础雄厚，上下游配套完整':
     'Core area of the Wenling pump and motor industrial cluster, with a strong industrial base and complete supply-chain support',
-  '13197228342 / 联系人：潘晨': '13197228342 / Contact: Pan Chen',
+  '+86 13197228342 / 联系人：潘晨': '+86 13197228342 / Contact: Pan Chen',
   主营产品: 'Main products',
   围绕清洗设备延展产品矩阵: 'Extending the product matrix around cleaning equipment',
   '磐宏机电以高压清洗机为核心，同时覆盖电机、微特电机及组件、泵及真空设备、风机、风扇、金属加工设备、农业机械和相关进出口业务。产品矩阵服务家用及工业两大应用领域，便于客户按场景和采购需求形成组合选型。':
@@ -938,9 +950,9 @@ const reversePhraseTranslations = Object.entries(reverseTranslations)
 const languageStorageKey = 'panhiro-language';
 function readStoredLanguage() {
   try {
-    return localStorage.getItem(languageStorageKey) || 'zh';
+    return localStorage.getItem(languageStorageKey) || 'en';
   } catch {
-    return 'zh';
+    return 'en';
   }
 }
 
@@ -1197,12 +1209,14 @@ function setLanguage(lang) {
     languageCurrent.textContent = lang === 'en' ? 'EN' : '中';
   }
   languageToggle?.querySelector('small')?.replaceChildren(document.createTextNode(lang === 'en' ? '中' : 'EN'));
+  syncContactFloatWithLanguage(lang);
 }
 
 window.applyPanhiroLanguage = () => setLanguage(activeLanguage);
 
 languageToggle?.addEventListener('click', () => {
-  setLanguage(activeLanguage === 'en' ? 'zh' : 'en');
+  const nextLanguage = activeLanguage === 'en' ? 'zh' : 'en';
+  setLanguage(nextLanguage);
 });
 
 setLanguage(activeLanguage);

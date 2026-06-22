@@ -29,7 +29,7 @@ const pages = {
         ['公司名称', '台州磐宏机电有限公司'],
         ['所在区域', '浙江省台州市温岭市大溪镇后瓦屿工业园区'],
         ['产业基础', '温岭泵与电机产业集群核心地带，工业基础雄厚，上下游配套完整'],
-        ['联系方式', '13197228342 / 联系人：潘晨'],
+        ['联系方式', '+86 13197228342 / 联系人：潘晨'],
       ],
       sections: [
         {
@@ -593,7 +593,7 @@ if (key === 'contact') {
         <article class="contact-channel-card contact-channel-phone">
           <span>02</span>
           <small>电话咨询</small>
-          <a href="tel:13197228342">13197228342</a>
+          <a href="tel:+8613197228342">+86 13197228342</a>
           <p>适合急需确认产品资料、报价方向、样机沟通或售后问题。</p>
         </article>
         <div class="contact-channel-grid">

@@ -2699,6 +2699,12 @@ body.inquiry-dialog-open {
   filter: saturate(1.08) brightness(1.04);
 }
 
+.contact-float.is-language-collapsed {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(calc(100% + 42px), var(--contact-shift), 0) scale(var(--contact-scale));
+}
+
 .contact-float-toggle {
   position: relative;
   display: grid;
@@ -5973,4 +5979,13 @@ body.report-lightbox-open {
 
 .strength-list li::before {
   content: "◇ ";
+}
+.inquiry-honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
 }

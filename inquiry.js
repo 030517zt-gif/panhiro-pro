@@ -1,6 +1,8 @@
 const panhiroInquiryConfig = {
-  recipientEmail: '2949799538@qq.com',
-  formSubmitEndpoint: 'https://formsubmit.co/ajax/2949799538@qq.com',
+  recipientEmail: ['2949799538', 'qq.com'].join('@'),
+  get formSubmitEndpoint() {
+    return `https://formsubmit.co/ajax/${encodeURIComponent(this.recipientEmail)}`;
+  },
 };
 
 const inquiryOptions = {
@@ -95,6 +97,10 @@ function buildInquiryMarkup(form) {
       <span class="field-label-text">需求说明</span>
       <textarea name="message" rows="4" placeholder="请补充使用场景、预算区间、交期、资料需求或售后问题"></textarea>
     </label>
+    <label class="inquiry-honey" aria-hidden="true">
+      Website
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+    </label>
     <input type="hidden" name="source" value="${source}" />
     <button class="inquiry-submit" type="submit">
       <span>提交询盘</span>
@@ -127,7 +133,17 @@ function getInquiryFields(form) {
     quantity: String(formData.get('quantity') || '').trim(),
     configuration: String(formData.get('configuration') || '').trim(),
     message: String(formData.get('message') || '').trim(),
+    honey: String(formData.get('_honey') || '').trim(),
   };
+}
+
+function isInquiryRateLimited() {
+  const key = 'panhiro:lastInquiryAt';
+  const now = Date.now();
+  const last = Number(localStorage.getItem(key) || 0);
+  if (last && now - last < 30000) return true;
+  localStorage.setItem(key, String(now));
+  return false;
 }
 
 function buildInquiryEmail(fields) {
@@ -247,6 +263,7 @@ async function sendInquiry(fields, email) {
     _subject: email.subject,
     _template: 'table',
     _captcha: 'false',
+    _honey: fields.honey,
     来源: fields.source,
     联系人: fields.name,
     公司门店: fields.company,
@@ -289,6 +306,14 @@ function openInquiryMailDraft(email) {
 
 async function submitEnhancedInquiry(form) {
   const fields = getInquiryFields(form);
+  if (fields.honey) return;
+  if (isInquiryRateLimited()) {
+    showInquiryDialog('error', {
+      message: 'Inquiry submitted too frequently. Please try again in 30 seconds.',
+      summary: buildInquirySummary(fields),
+    });
+    return;
+  }
   if (!fields.name || !fields.contact) {
     showInquiryDialog('error', {
       message: '请先填写联系人和联系方式，方便我们回访并匹配资料。',

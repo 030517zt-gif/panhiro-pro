@@ -6,6 +6,38 @@
     <title>磐宏清洗设备 | 页面详情</title>
     <meta name="description" content="磐宏清洗设备子页面模板。" />
     <link rel="canonical" href="https://www.panhiro.top/subpage" />
+    <script>
+      (function () {
+        var base = 'https://www.panhiro.top';
+        var seo = {
+          'company-profile': ['Panhiro Company Profile', 'Learn about Taizhou Panhong Electromechanical Co., Ltd. and its pressure washer manufacturing capability.'],
+          'company-strength': ['Panhiro Manufacturing Strength', 'Pressure washer production, quality control, product data, and OEM/ODM cooperation capability.'],
+          products: ['Panhiro Pressure Washer Products', 'Compare Panhiro P4, P5, PH, VK and VK-Y1 pressure washer series by use case.'],
+          'vk-y1': ['VK-Y1 EV Powered Pressure Washer', 'VK-Y1 is Panhiro EV powered permanent-magnet inverter pressure washer for mobile and commercial cleaning.'],
+          'vk-1010-p4': ['VK-1010-P4 High Pressure Cleaning Machine', 'VK-1010-P4 is a Panhiro VK series high pressure cleaning machine for commercial and dealer use.'],
+          'vk-1011': ['VK-1011 Commercial Pressure Washer', 'VK-1011 is a commercial pressure washer for dealers, cleaning shops, and professional buyers.'],
+          'ph-0885': ['PH-0885 Home Pressure Washer', 'PH-0885 is a Panhiro PH series home pressure washer for regular vehicle and courtyard cleaning.'],
+          ph0995: ['PH-0995 Semi Commercial Pressure Washer', 'PH-0995 is the upgraded PH series pressure washer for stronger home and light commercial cleaning.'],
+          'p4-p5': ['P4 P5 Handheld Pressure Washer', 'P4 and P5 are compact handheld pressure washers for entry-level home and car washing.'],
+          service: ['Panhiro Service Support', 'Product manuals, after-sales video support, and procurement communication for Panhiro pressure washers.'],
+          'service-video': ['Panhiro After-sales Videos', 'Installation, use, and maintenance video support for Panhiro pressure washer customers.'],
+          'service-download': ['Panhiro Product Downloads', 'Download pressure washer catalogs, specifications, certification files, and product documents.'],
+          contact: ['Contact Panhiro Pressure Washer Manufacturer', 'Contact Panhiro for pressure washer product details, OEM/ODM cooperation, and purchase inquiries.'],
+        };
+        var page = new URLSearchParams(location.search).get('page') || 'products';
+        var data = seo[page];
+        if (!data) return;
+        var canonical = base + '/subpage?page=' + encodeURIComponent(page);
+        document.title = data[0] + ' | Panhiro';
+        document.querySelector('meta[name="description"]')?.setAttribute('content', data[1]);
+        document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonical);
+        document.querySelector('meta[property="og:title"]')?.setAttribute('content', data[0] + ' | Panhiro');
+        document.querySelector('meta[property="og:description"]')?.setAttribute('content', data[1]);
+        document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonical);
+        document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', data[0] + ' | Panhiro');
+        document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', data[1]);
+      })();
+    </script>
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="磐宏清洗设备" />
     <meta property="og:locale" content="zh_CN" />
@@ -169,9 +201,9 @@
           <span>快速联系</span>
           <button type="button" data-contact-close aria-label="收起联系方式">×</button>
         </div>
-        <a class="contact-phone" href="tel:13197228342">
+        <a class="contact-phone" href="tel:+8613197228342">
           <small>电话咨询</small>
-          <strong>13197228342</strong>
+          <strong>+86 13197228342</strong>
         </a>
         <div class="contact-qr-grid">
           <div class="contact-qr-card">

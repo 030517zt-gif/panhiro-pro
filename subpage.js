@@ -4,9 +4,9 @@ const pages = {
     title: '公司简介',
     summary: '台州磐宏机电有限公司成立于 2009 年，是一家以清洗机设备研发制造为核心，集开发、生产与销售于一体的专业厂家。',
     code: 'ABOUT',
-    image: './assets/panhiro-logo-hd.png',
-    imageAlt: '磐宏 Panhiro 品牌标识',
-    visualType: 'logo',
+    image: './assets/panhiro-factory-building.png',
+    imageAlt: '磐宏工厂厂区实拍',
+    visualType: 'factory',
     sectionTitle: '立足温岭泵与电机产业带，深耕清洗设备制造',
     description:
       '公司坐落于浙江省台州市温岭市大溪镇后瓦屿工业园区，依托当地泵与电机产业集群的配套优势，持续向专业化、规范化和数字化运营方向发展。磐宏以高压清洗机为核心产品，覆盖家用、工业、洗车设备、电机与泵等相关业务，为国内外客户提供稳定的产品与合作支持。',
@@ -459,11 +459,14 @@ document
   .querySelector('.subpage-content')
   ?.classList.toggle('company-profile-summary', Boolean(data.profile || data.strength));
 
+document.querySelector('.subpage-hero')?.classList.toggle('subpage-hero-factory', data.visualType === 'factory');
+
 const image = document.querySelector('[data-subpage-image]');
 if (image) {
   image.src = data.image;
   image.alt = data.imageAlt;
   image.closest('.subpage-visual')?.classList.toggle('subpage-visual-logo', data.visualType === 'logo');
+  image.closest('.subpage-visual')?.classList.toggle('subpage-visual-factory', data.visualType === 'factory');
 }
 
 const points = document.querySelector('[data-subpage-points]');

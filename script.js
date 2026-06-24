@@ -22,7 +22,7 @@ const contactToggle = document.querySelector('[data-contact-toggle]');
 const contactClose = document.querySelector('[data-contact-close]');
 
 const inquiryEmailConfig = {
-  recipientEmail: ['2949799538', 'qq.com'].join('@'),
+  recipientEmail: 'sales@panhiro.net',
   get formSubmitEndpoint() {
     return `https://formsubmit.co/ajax/${encodeURIComponent(this.recipientEmail)}`;
   },
@@ -65,7 +65,7 @@ if (launchIntro) {
     launchIntro.hidden = true;
   } else {
     document.body.classList.add('intro-lock', 'home-preenter');
-    launchTimer = window.setTimeout(closeLaunchIntro, 3600);
+    launchTimer = window.setTimeout(closeLaunchIntro, 1900);
     launchSkip?.addEventListener('click', closeLaunchIntro);
   }
 }
@@ -152,6 +152,7 @@ const textTranslations = {
   收起联系方式: 'Close contact options',
   快速联系: 'Quick contact',
   电话咨询: 'Phone',
+  邮箱联系: 'Email',
   企业微信二维码: 'WeCom QR code',
   抖音店铺二维码: 'Douyin shop QR code',
   企业微信: 'WeCom',
@@ -354,6 +355,163 @@ const textTranslations = {
   'PH-0995 高级家用 / 半商用升级': 'PH-0995 advanced home / semi-commercial upgrade',
   'P4 / P5 入门家用手提款': 'P4 / P5 entry home handheld',
   全系列产品目录: 'Full product catalog',
+};
+
+const homepageFactoryTranslations = {}; /*
+  磐宏源头工厂与制造能力: 'Panhiro source factory and manufacturing capability',
+  磐宏工厂厂区实拍: 'Panhiro factory campus',
+  '源头工厂 · 清洗设备制造': 'Source factory · Cleaning equipment manufacturing',
+  高压清洗机源头工厂，真实厂区与稳定供货能力:
+    'Pressure washer source factory with real campus and stable supply capability',
+  磐宏专注高压清洗机、洗车机、新能源外放电移动清洗设备，面向渠道客户、批量采购和 OEM/ODM 合作提供清晰选型支持。:
+    'Panhiro focuses on pressure washers, car washers, EV-output mobile cleaning machines, and clear selection support for channels, bulk procurement, and OEM/ODM cooperation.',
+  查看工厂实力: 'View factory strength',
+  '获取目录 / 报价': 'Get catalog / quote',
+  工厂能力亮点: 'Factory capability highlights',
+  真实工厂: 'Real factory',
+  厂区、办公、装配与发货场景: 'Factory campus, office, assembly, and shipment areas',
+  产品矩阵: 'Product lineup',
+  合作支持: 'Cooperation support',
+  'OEM/ODM · 批量采购 · 渠道合作': 'OEM/ODM · Bulk procurement · Channel cooperation',
+  公司介绍与产品轮播: 'Company overview and product carousel',
+  关于磐宏: 'About Panhiro',
+  先看工厂实力，再按使用强度快速选型: 'See factory strength first, then choose by usage intensity',
+  首页第一屏展示真实厂区，第二屏直接进入采购最关心的产品线。磐宏覆盖入门家用手提款、高级家用与半商用 PH 系列、商用 VK 系列，以及 VK-Y1 外放电永磁变频主推款。:
+    'The first screen shows the real factory campus, while the second screen guides buyers directly into the product lines they care about. Panhiro covers entry handheld models, advanced home and semi-commercial PH series, commercial VK series, and the VK-Y1 EV-output PM inverter featured model.',
+  源头制造: 'Source manufacturing',
+  装配质检: 'Assembly inspection',
+  产品资料: 'Product materials',
+  渠道合作: 'Channel cooperation',
+  产品中心: 'Product center',
+  按使用强度选择系列: 'Choose series by usage intensity',
+  产品轮播控制: 'Product carousel controls',
+  上一个产品: 'Previous product',
+  下一个产品: 'Next product',
+  'P4 P5 入门家用手提清洗机': 'P4 P5 entry home handheld pressure washer',
+  入门家用手提款: 'Entry home handheld',
+  PH 系列高级家用与半商用清洗机: 'PH series advanced home and semi-commercial pressure washer',
+  高级家用 / 半商用: 'Advanced home / semi-commercial',
+  VK 商用级高压清洗机: 'VK commercial pressure washer',
+  商用级 / 玩家级: 'Commercial / enthusiast',
+  VK-Y1 外放电永磁变频清洗机: 'VK-Y1 EV output PM inverter pressure washer',
+  外放电永磁变频主推款: 'EV output PM inverter featured model',
+  快速产品选型: 'Quick product selection',
+  半商用: 'Semi-commercial',
+  商用级: 'Commercial',
+  外放电主推: 'EV featured',
+  咨询建议: 'Get advice',
+  对比型号: 'Compare models',
+  询问匹配: 'Ask fit',
+  获取报价: 'Get quote',
+  我想了解 P4 / P5 入门家用手提款，请推荐配置和报价区间。:
+    'Interested in P4 / P5 entry handheld models. Please recommend configuration and quote range.',
+  我想了解 PH 系列，请帮我对比 PH-0885 和 PH-0995。:
+    'Interested in PH series. Please compare PH-0885 and PH-0995.',
+  我想了解 VK 商用系列，请按使用强度推荐 VK-1010-P4 或 VK-1011。:
+    'Interested in VK commercial series. Please recommend VK-1010-P4 or VK-1011 by usage intensity.',
+  我想了解 VK-Y1 外放电永磁变频款，请发送产品资料、配置和合作报价。:
+    'Interested in VK-Y1 EV output PM inverter model. Please send catalog, configuration, and cooperation quote.',
+  台州磐宏工厂厂区实拍: 'Taizhou Panhiro factory campus',
+  真实工厂实拍: 'Real factory photo',
+  磐宏制造基地: 'Panhiro manufacturing base',
+  厂房、办公区、停车与发货通道集中在同一厂区，便于客户判断真实供货能力。:
+    'Factory building, office area, parking, and shipment access are located in one campus, helping customers judge real supply capability.',
+};
+
+*/
+const homepageFactoryTranslationOverrides = {
+  '磐宏源头工厂与制造能力': 'Panhiro source factory and manufacturing capability',
+  '磐宏工厂厂区实拍': 'Panhiro factory campus',
+  '源头工厂 · 清洗设备制造': 'Source factory · Cleaning equipment manufacturing',
+  '高压清洗机源头工厂，真实厂区与稳定供货能力':
+    'Pressure washer source factory with real campus and stable supply capability',
+  '磐宏专注高压清洗机、洗车机、新能源外放电移动清洗设备，面向渠道客户、批量采购和 OEM/ODM 合作提供清晰选型支持。':
+    'Panhiro focuses on pressure washers, car washers, EV-output mobile cleaning machines, and clear selection support for channels, bulk procurement, and OEM/ODM cooperation.',
+  '查看工厂实力': 'View factory strength',
+  '获取目录 / 报价': 'Get catalog / quote',
+  '工厂能力亮点': 'Factory capability highlights',
+  '真实工厂': 'Real factory',
+  '厂区、办公、装配与发货场景': 'Factory campus, office, assembly, and shipment areas',
+  '产品矩阵': 'Product lineup',
+  '合作支持': 'Cooperation support',
+  'OEM/ODM · 批量采购 · 渠道合作': 'OEM/ODM · Bulk procurement · Channel cooperation',
+  '公司介绍与产品轮播': 'Company overview and product carousel',
+  '关于磐宏': 'About Panhiro',
+  '先看工厂实力，再按使用强度快速选型': 'See factory strength first, then choose by usage intensity',
+  '首页第一屏展示真实厂区，第二屏直接进入采购最关心的产品线。磐宏覆盖入门家用手提款、高级家用与半商用 PH 系列、商用 VK 系列，以及 VK-Y1 外放电永磁变频主推款。':
+    'The first screen shows the real factory campus, while the second screen guides buyers directly into the product lines they care about. Panhiro covers entry handheld models, advanced home and semi-commercial PH series, commercial VK series, and the VK-Y1 EV-output PM inverter featured model.',
+  '源头制造': 'Source manufacturing',
+  '装配质检': 'Assembly inspection',
+  '产品资料': 'Product materials',
+  '渠道合作': 'Channel cooperation',
+  '产品中心': 'Product center',
+  '按使用强度选择系列': 'Choose series by usage intensity',
+  '产品轮播控制': 'Product carousel controls',
+  '上一个产品': 'Previous product',
+  '下一个产品': 'Next product',
+  'P4 P5 入门家用手提清洗机': 'P4 P5 entry home handheld pressure washer',
+  '入门家用手提款': 'Entry home handheld',
+  'PH 系列高级家用与半商用清洗机': 'PH series advanced home and semi-commercial pressure washer',
+  '高级家用 / 半商用': 'Advanced home / semi-commercial',
+  'VK 商用级高压清洗机': 'VK commercial pressure washer',
+  '商用级 / 玩家级': 'Commercial / enthusiast',
+  'VK-Y1 外放电永磁变频清洗机': 'VK-Y1 EV output PM inverter pressure washer',
+  '外放电永磁变频主推款': 'EV output PM inverter featured model',
+  '快速产品选型': 'Quick product selection',
+  '半商用': 'Semi-commercial',
+  '商用级': 'Commercial',
+  '外放电主推': 'EV featured',
+  '咨询建议': 'Get advice',
+  '对比型号': 'Compare models',
+  '询问匹配': 'Ask fit',
+  '获取报价': 'Get quote',
+  '我想了解 P4 / P5 入门家用手提款，请推荐配置和报价区间。':
+    'Interested in P4 / P5 entry handheld models. Please recommend configuration and quote range.',
+  '我想了解 PH 系列，请帮我对比 PH-0885 和 PH-0995。':
+    'Interested in PH series. Please compare PH-0885 and PH-0995.',
+  '我想了解 VK 商用系列，请按使用强度推荐 VK-1010-P4 或 VK-1011。':
+    'Interested in VK commercial series. Please recommend VK-1010-P4 or VK-1011 by usage intensity.',
+  '我想了解 VK-Y1 外放电永磁变频款，请发送产品资料、配置和合作报价。':
+    'Interested in VK-Y1 EV output PM inverter model. Please send catalog, configuration, and cooperation quote.',
+  '台州磐宏工厂厂区实拍': 'Taizhou Panhiro factory campus',
+  '真实工厂实拍': 'Real factory photo',
+  '磐宏制造基地': 'Panhiro manufacturing base',
+  '厂房、办公区、停车与发货通道集中在同一厂区，便于客户判断真实供货能力。':
+    'Factory building, office area, parking, and shipment access are located in one campus, helping customers judge real supply capability.',
+};
+
+const homepageCompanyTranslations = {
+  'Panhiro 高压清洗设备': 'Panhiro Pressure Washer Equipment',
+  'Panhiro 清洗设备': 'Panhiro Cleaning Equipment',
+  '面向经销渠道、工程采购、洗车服务和长期合作伙伴，磐宏提供家用、半商用、商用及外放电清洗设备，支持产品资料、选型建议和合作报价。':
+    'For distributors, project procurement, car wash services, and long-term partners, Panhiro provides home, semi-commercial, commercial, and EV-output cleaning equipment with product materials, selection advice, and cooperation quotations.',
+  查看工厂实力: 'View factory strength',
+  '获取目录 / 报价': 'Get catalog / quote',
+  工厂能力亮点: 'Factory capability highlights',
+  真实工厂: 'Real factory',
+  '厂区、办公、装配与发货场景': 'Campus, office, assembly, and shipping areas',
+  产品矩阵: 'Product lineup',
+  合作支持: 'Cooperation support',
+  'OEM/ODM · 批量采购 · 渠道合作': 'OEM/ODM · Bulk procurement · Channel cooperation',
+  公司介绍与企业实力: 'Company overview and capability',
+  走进磐宏: 'About Panhiro',
+  '专注高压清洗设备研发、制造与稳定交付':
+    'Focused on pressure washer development, manufacturing, and stable delivery',
+  '磐宏围绕家用、半商用、商用及新能源外放电清洗场景，建立从产品开发、装配检测到资料支持和订单沟通的完整服务流程，为渠道合作与批量采购提供更稳定的产品基础。':
+    'Panhiro builds a complete service process for home, semi-commercial, commercial, and EV-output cleaning scenarios, covering product development, assembly inspection, material support, and order communication for more stable channel cooperation and bulk procurement.',
+  产品研发: 'Product development',
+  装配检测: 'Assembly inspection',
+  批量交付: 'Bulk delivery',
+  企业简介: 'Company Profile',
+  为清洗设备客户提供可持续合作能力: 'Sustainable cooperation capability for cleaning equipment customers',
+  '产品覆盖 P4/P5、PH、VK、VK-Y1 等系列，适配家庭清洗、门店服务、商用高频作业及移动清洗场景。我们重视产品稳定性、资料响应、配置沟通和长期售后协同。':
+    'Products cover P4/P5, PH, VK, VK-Y1, and other series for home cleaning, store services, high-frequency commercial use, and mobile cleaning scenarios. We focus on product stability, material response, configuration communication, and long-term after-sales coordination.',
+  了解磐宏: 'Learn about Panhiro',
+  磐宏企业实力数据: 'Panhiro company capability data',
+  核心产品系列: 'Core product series',
+  支持定制合作: 'Customization cooperation',
+  装配检测流程: 'Assembly inspection process',
+  渠道与批量采购支持: 'Channel and bulk procurement support',
 };
 
 const supplementalTranslations = {
@@ -928,7 +1086,15 @@ const extendedTranslations = {
   '表单咨询 | 磐宏清洗设备': 'Contact Form | Panhiro Cleaning Equipment',
 };
 
-Object.assign(textTranslations, supplementalTranslations, remainingTranslations, extendedTranslations);
+Object.assign(
+  textTranslations,
+  homepageFactoryTranslations,
+  homepageFactoryTranslationOverrides,
+  homepageCompanyTranslations,
+  supplementalTranslations,
+  remainingTranslations,
+  extendedTranslations,
+);
 
 function normalizeTranslationKey(value) {
   return value.replace(/\s+/g, ' ').trim();
@@ -938,6 +1104,7 @@ const normalizedTextTranslations = Object.fromEntries(
   Object.entries(textTranslations).map(([zh, en]) => [normalizeTranslationKey(zh), en]),
 );
 const reverseTranslations = Object.fromEntries(Object.entries(textTranslations).map(([zh, en]) => [en, zh]));
+delete reverseTranslations.Panhiro;
 const normalizedReverseTranslations = Object.fromEntries(
   Object.entries(reverseTranslations).map(([en, zh]) => [normalizeTranslationKey(en), zh]),
 );
@@ -950,9 +1117,9 @@ const reversePhraseTranslations = Object.entries(reverseTranslations)
 const languageStorageKey = 'panhiro-language';
 function readStoredLanguage() {
   try {
-    return localStorage.getItem(languageStorageKey) || 'en';
+    return localStorage.getItem(languageStorageKey) || 'zh';
   } catch {
-    return 'en';
+    return 'zh';
   }
 }
 

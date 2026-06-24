@@ -1,5 +1,5 @@
 const panhiroInquiryConfig = {
-  recipientEmail: ['2949799538', 'qq.com'].join('@'),
+  recipientEmail: 'sales@panhiro.net',
   get formSubmitEndpoint() {
     return `https://formsubmit.co/ajax/${encodeURIComponent(this.recipientEmail)}`;
   },
